@@ -1,13 +1,20 @@
+import { useState } from 'react';
 import './App.css'
 import { Card } from './components/card/card'
 import { useFoodData } from './hooks/useFoodData'
+import { CreateModal } from './create-modal/CreateModal'
 
 function App() {
 
   const {data} = useFoodData();
+  const [isModelOpen, setIsModelOpen]= useState(false);
+
+  const handleModal = () => {
+    setIsModelOpen(prev => !prev);
+    console.log(isModelOpen);
+  }
 
   return (
-    <>
       <div className='container'>
         <h1>Cardápio</h1>
         <div className='card-grid'>
@@ -17,10 +24,15 @@ function App() {
             title={foodData.title}
             image={foodData.image}
            />)}
-
         </div>
+
+        {isModelOpen && 
+        <CreateModal/>
+        }{
+          !isModelOpen &&
+          <button className="button" onClick={handleModal}>Criar Novo Item</button>
+        }
       </div>
-    </>
   )
 }
 
