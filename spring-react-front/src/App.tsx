@@ -27,11 +27,9 @@ function App() {
         </div>
 
         {isModelOpen && 
-        <CreateModal/>
-        }{
-          !isModelOpen &&
-          <button className="button" onClick={handleModal}>Criar Novo Item</button>
+        <CreateModal closeModal={handleModal}/>
         }
+          <button className="button" onClick={handleModal}>Criar Novo Item</button>
       </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFoodDataMutate } from '../hooks/useDataFoodDataMutate'
 import { FoodData } from '../interface/FoodData'
 import './createModal.css'
@@ -7,6 +7,10 @@ interface InputProps {
     label: string,
     value: string|number,
     updateValue(value:any):void
+}
+
+interface ModalProps {
+    closeModal():void
 }
 
 const Input = ({label,value,updateValue} : InputProps) => {
@@ -20,12 +24,13 @@ const Input = ({label,value,updateValue} : InputProps) => {
 }
 
 
-export const CreateModal = () => {
+export const CreateModal = ({closeModal}:ModalProps) => {
     
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
-    const {mutate} = useFoodDataMutate();
+    const {mutate, isSuccess, status} = useFoodDataMutate();
+    const isLoading = status === 'loading';
 
     const submit=()=>{
         const foodData: FoodData = {
@@ -36,7 +41,10 @@ export const CreateModal = () => {
         mutate(foodData);
 
     }
-
+    useEffect(() => {
+        if(!isSuccess) return;
+        closeModal();
+    }, [isSuccess])
   return (
     <div className='modal'>
         <h2 className='header'>Cadastre um novo item no cardápio</h2>
@@ -44,7 +52,9 @@ export const CreateModal = () => {
             <Input label="Nome do prato" value={title} updateValue={setTitle} />
             <Input label="Preço" value={price} updateValue={setPrice} />
             <Input label="Imagem" value={image} updateValue={setImage} />
-            <button className="button-modal" type="submit" onClick={submit}>Cadastrar</button>
+            <button className="button-modal" type="submit" onClick={submit}>
+            {isLoading ? 'Postando Novo Item...' : 'Criar'}
+            </button>
         </form>
     </div>
   )
