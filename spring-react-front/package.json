@@ -1,10 +1,12 @@
 {
   "name": "spring-react-front",
   "private": true,
+  "homepage": "https://gabisinhas.github.io/spring-react-front/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "deploy": "vite build && gh-pages -d dist",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite build && vite preview",
