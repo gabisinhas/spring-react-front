@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import './App.css'
 import { Card } from './components/card/card'
 import { useFoodData } from './hooks/useFoodData'
-import { CreateModal } from './create-modal/CreateModal'
+import { CreateModal } from './create-modal/createModal'
 
 function App() {
 

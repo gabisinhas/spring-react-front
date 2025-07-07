@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFoodDataMutate } from '../hooks/useDataFoodDataMutate'
 import { FoodData } from '../interface/FoodData'
 import './createModal.css'
