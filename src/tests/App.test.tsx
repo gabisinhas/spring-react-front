@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import App from '../App';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // Mock the useFoodData hook to return mock data
 vi.mock('../hooks/useFoodData', () => ({
@@ -48,6 +49,16 @@ vi.mock('../create-modal/CreateModal', () => ({
     </div>
   )
 }));
+
+const renderWithClient = (ui) => {
+  const queryClient = new QueryClient();
+  return render(
+    <QueryClientProvider client={queryClient}>
+      {ui}
+    </QueryClientProvider>
+  );
+};
+
 
 describe('App Component', () => {
   beforeEach(() => {
