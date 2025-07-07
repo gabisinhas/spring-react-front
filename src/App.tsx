@@ -18,7 +18,7 @@ function App() {
       <div className='container'>
         <h1>Cardápio do Restaurante</h1>
         <div className='card-grid'>
-          {data?.map(foodData => 
+          {data?.map((foodData:any) => 
           <Card
             price={foodData.price}
             title={foodData.title}

@@ -30,7 +30,7 @@ export const CreateModal = ({closeModal}:ModalProps) => {
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
     const {mutate, isSuccess, status} = useFoodDataMutate();
-    const isLoading = status === 'loading';
+    const isLoading = status === 'pending';
 
     const submit=()=>{
         const foodData: FoodData = {

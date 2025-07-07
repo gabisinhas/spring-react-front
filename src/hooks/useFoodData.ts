@@ -1,10 +1,11 @@
-import axios, { AxiosPromise } from 'axios';
+import axios from 'axios'
+import type { AxiosResponse } from 'axios';
 import { FoodData } from '../interface/FoodData';
 import { useQuery } from '@tanstack/react-query';
 
 const API_URL = 'http://localhost:8080';
 
-const fetchData = async ():AxiosPromise<FoodData[]> => {
+const fetchData = async (): Promise<AxiosResponse<FoodData[]>> => {
     const response = axios.get(API_URL + '/food');
     return response;
 }
