@@ -2,6 +2,7 @@ import './App.css'
 import { Card } from './components/card/card'
 import { useFoodData } from './hooks/useFoodData'
 import { CreateModal } from './create-modal/createModal'
+import { useState } from 'react'
 
 function App() {
 
