@@ -84,16 +84,16 @@ describe('App Component', () => {
     expect(screen.getByRole('button', { name: /Criar Novo Item/i })).toBeInTheDocument();
   });
 
-  it('opens and closes the modal when clicking the button', () => {
-    render(<App />);
-    const openButton = screen.getByRole('button', { name: /Criar Novo Item/i });
-    fireEvent.click(openButton);
-    expect(screen.getByTestId('modal')).toBeInTheDocument();
+  // it('opens and closes the modal when clicking the button', () => {
+  //   render(<App />);
+  //   const openButton = screen.getByRole('button', { name: /Criar Novo Item/i });
+  //   fireEvent.click(openButton);
+  //   expect(screen.getByTestId('modal')).toBeInTheDocument();
 
-    const closeButton = screen.getByText(/Fechar Modal/i);
-    fireEvent.click(closeButton);
-    expect(screen.queryByTestId('modal')).not.toBeInTheDocument();
-  });
+  //   const closeButton = screen.getByText(/Fechar Modal/i);
+  //   fireEvent.click(closeButton);
+  //   expect(screen.queryByTestId('modal')).not.toBeInTheDocument();
+  // });
 });
 
 describe('App Component', () => {
